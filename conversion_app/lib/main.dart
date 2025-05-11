@@ -78,7 +78,7 @@ class _ConverterState extends State<Converter> {
     var result = value * multiplier;
 
     resultMessage =
-        '${userInput.toString()} ${_startMeasurement} is equal to ${result.toString()} ${_convertMeasurement}';
+      '${userInput.toStringAsFixed(2)} $_startMeasurement is equal to ${result.toStringAsFixed(2)} $_convertMeasurement .';
 
     setState(() {
       resultMessage = resultMessage;
@@ -90,17 +90,18 @@ class _ConverterState extends State<Converter> {
   late String _convertMeasurement;
   late String resultMessage;
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(40.0),
           child: Column(
             children: [
               Text(
                 "Measurement Conversion",
-                style: TextStyle(fontSize: 30, color: Colors.blue),
+                style: TextStyle(fontSize: 25, color: Colors.blue),
               ),
               SizedBox(height: 50),
               Text("Value", style: TextStyle(fontSize: 20, color: Colors.grey)),
@@ -173,7 +174,7 @@ class _ConverterState extends State<Converter> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
+                child: SizedBox(
                   width: 100,
                   height: 50,
                   child: ElevatedButton(
@@ -184,7 +185,7 @@ class _ConverterState extends State<Converter> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text('Please fill all fields'),
-                            duration: Duration(seconds: 2),
+                            duration: Duration(seconds: 4),
                           ),
                         );
                         return;
